@@ -13,7 +13,7 @@ const ActionButton: React.FC<ActionButtonProps> = ({ href, icon, label, primary 
     return (
       <a
         href={href}
-        className="flex items-center justify-center space-x-3 px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold transition-all duration-300 transform hover:-translate-y-1 shadow-lg shadow-blue-900/20"
+        className="flex items-center justify-center space-x-3 px-10 py-5 rounded-2xl bg-[#007b22] hover:bg-[#00641c] text-white font-black transition-all duration-300 transform hover:-translate-y-1 shadow-[0_15px_30px_rgba(0,123,34,0.25)] uppercase tracking-[0.2em] text-[11px]"
       >
         {icon}
         <span>{label}</span>
@@ -24,7 +24,7 @@ const ActionButton: React.FC<ActionButtonProps> = ({ href, icon, label, primary 
   return (
     <a
       href={href}
-      className="flex items-center justify-center space-x-3 px-8 py-4 rounded-xl bg-white/5 hover:bg-white/10 text-white font-semibold border border-white/10 hover:border-white/20 transition-all duration-300 transform hover:-translate-y-1"
+      className="flex items-center justify-center space-x-3 px-10 py-5 rounded-2xl bg-[#1d3b64] hover:bg-[#152a48] text-white font-black transition-all duration-300 transform hover:-translate-y-1 shadow-[0_15px_30px_rgba(29,59,100,0.15)] uppercase tracking-[0.2em] text-[11px]"
     >
       {icon}
       <span>{label}</span>
