@@ -7,8 +7,8 @@ import ActionButton from './components/ActionButton';
 const App: React.FC = () => {
   const services = ["Hardwood", "Laminate", "LVP", "Tile", "Refinishing"];
   
-  // Link ảnh trực tiếp từ Google Drive ID: 15MO40LD0F6ttQbjJamb3PrhGnB1LSGVe
-  const logoUrl = "https://lh3.googleusercontent.com/d/15MO40LD0F6ttQbjJamb3PrhGnB1LSGVe";
+  // URL chuẩn để hiển thị trực tiếp từ Google Drive
+  const logoUrl = "https://drive.google.com/uc?export=view&id=15MO40LD0F6ttQbjJamb3PrhGnB1LSGVe";
 
   return (
     <main className="min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden bg-[#f8fafc] px-4 py-6 md:py-16">
@@ -26,7 +26,7 @@ const App: React.FC = () => {
           </div>
         </div>
 
-        {/* Logo Section - Fixed URL */}
+        {/* Logo Section - Fixed URL with CrossOrigin Fix */}
         <div className="flex flex-col items-center w-full px-2">
           <div className="relative group w-full max-w-[720px] bg-white p-5 md:p-14 rounded-[2rem] md:rounded-[3rem] shadow-[0_20px_50px_-12px_rgba(29,59,100,0.12)] border border-white transition-all duration-700 hover:shadow-[0_40px_80px_-15px_rgba(29,59,100,0.2)] overflow-hidden">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-1 bg-gradient-to-r from-transparent via-[#007b22] to-transparent opacity-40" />
@@ -34,22 +34,25 @@ const App: React.FC = () => {
             <img 
               src={logoUrl} 
               alt="Elite Northwest Flooring" 
+              referrerPolicy="no-referrer"
               className="w-full h-auto max-h-[160px] md:max-h-[280px] object-contain block mx-auto transition-transform duration-700 group-hover:scale-[1.01]"
               onError={(e) => {
-                // Fallback nếu link ảnh gặp sự cố
-                e.currentTarget.style.display = 'none';
-                const parent = e.currentTarget.parentElement;
+                // Nếu vẫn lỗi link ảnh, hiển thị Text Logo chuyên nghiệp
+                const target = e.currentTarget;
+                target.style.display = 'none';
+                const parent = target.parentElement;
                 if (parent) {
-                  parent.innerHTML = `
-                    <div class="text-center py-12">
-                      <div class="text-[#1d3b64] font-black text-3xl md:text-5xl tracking-tight leading-none uppercase">ELITE NORTHWEST</div>
-                      <div class="flex items-center justify-center mt-3">
-                        <div class="h-[2px] bg-[#1d3b64] flex-grow opacity-20"></div>
-                        <div class="text-[#1d3b64] font-bold text-lg md:text-2xl px-4 tracking-[0.3em] uppercase">FLOORING</div>
-                        <div class="h-[2px] bg-[#1d3b64] flex-grow opacity-20"></div>
-                      </div>
+                  const fallback = document.createElement('div');
+                  fallback.className = 'text-center py-12';
+                  fallback.innerHTML = `
+                    <div class="text-[#1d3b64] font-black text-3xl md:text-5xl tracking-tight leading-none uppercase">ELITE NORTHWEST</div>
+                    <div class="flex items-center justify-center mt-3">
+                      <div class="h-[2px] bg-[#1d3b64] flex-grow opacity-20"></div>
+                      <div class="text-[#1d3b64] font-bold text-lg md:text-2xl px-4 tracking-[0.3em] uppercase">FLOORING</div>
+                      <div class="h-[2px] bg-[#1d3b64] flex-grow opacity-20"></div>
                     </div>
                   `;
+                  parent.appendChild(fallback);
                 }
               }}
             />

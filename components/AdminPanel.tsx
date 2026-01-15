@@ -1,2 +1,2 @@
 
-// File đã bị xóa do chức năng Admin không còn cần thiết.
+// File removed: Administrative functions are no longer required as per user request.
